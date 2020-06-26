@@ -1,0 +1,23 @@
+<aside id="nav-container" class="nav-container bg-dark nav-vertical nav-fixed sidebar">
+    <div class="nav-wrapper">
+        <ul id="nav" class="nav">
+            <li data-ng-repeat="page in pages" data-ng-class="{'active': menuActive(page)}" ng-click="menuClickHandler(page)">
+                <a href="@{{ page.file == '' ? 'javascript:;' : ('/' + (page.main == 0 ? (page.folder + '/' + page.file + '/') : '')) }}" data-ng-click="changePage(page);">
+                    <i class="@{{ page.icon }} i-menu-list"></i>
+                    <div class="main-menu-list">
+                        <span>@{{ page.name }}</span>
+                    </div>
+                </a>
+
+                <ul class="sub-menu" data-ng-class="{'opened': open[page.code]}">
+                    <li data-ng-repeat="sub in page.pages" data-ng-class="{'active': menuActive(sub)}" ng-click="menuClickHandler(sub)">
+                        <a href="@{{ '/' + sub.folder + '/' + sub.file + '/' }}">
+                            <i class="ti-angle-right"></i>
+                            <span>@{{ sub.name }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</aside>

@@ -1,0 +1,43 @@
+<div>
+	<div class="chars-area">
+		<textarea id="{{ id }}" class="form-control" placeholder="Message Text" ng-model="model" ng-change="charCount()"></textarea>
+	</div>
+
+	<div class="btn-group btn-group-justified move-top-pixel" ng-show="! showUrl">
+		<div class="btn-group" ng-if="firstname">
+			<button ng-click="insert('[$FirstName]')" type="button" class="btn btn-sm btn-default">
+				<i class="fa fa-user"></i> First Name
+			</button>
+		</div>
+
+		<div class="btn-group" ng-if="lastname">
+			<button ng-click="insert('[$LastName]')" type="button" class="btn btn-sm btn-default">
+				<i class="fa fa-user-o"></i> Last Name
+			</button>
+		</div>
+
+		<div class="btn-group" ng-if="link">
+			<button ng-click="insert('[$Link]')" type="button" class="btn btn-sm btn-default">
+				<i class="fa fa-link"></i> Link
+			</button>
+		</div>
+
+		<div class="btn-group" ng-if="shortLink">
+			<button ng-click="toggleUrl()" type="button" class="btn btn-sm btn-default">
+				<i class="fa fa-link"></i> Short Link
+			</button>
+		</div>
+	</div>
+
+	<div ng-show="showUrl" class="input-group short-url-box">
+		<input class="form-control" type="text" placeholder="Add your link here" ng-model="shortLinkMessageText" />
+		<div class="input-group-btn">
+			<button ng-click="insertShortLink(shortLinkMessageText)" type="button" class="btn btn-sm btn-primary">
+				<i class="fa fa-refresh"></i>
+			</button>
+			<button id="refresh" ng-click="toggleUrl()" type="button" class="btn btn-sm btn-default">
+				<i class="fa fa-times"></i>
+			</button>
+		</div>
+	</div>
+</div>
